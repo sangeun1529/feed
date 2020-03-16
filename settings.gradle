@@ -1,0 +1,5 @@
+rootProject.name = 'feed'
+include 'feed-api'
+include 'feed-core'
+include 'feed-common'
+include 'externel-api'

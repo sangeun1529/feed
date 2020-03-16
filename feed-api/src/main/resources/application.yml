@@ -1,0 +1,22 @@
+server:
+  port: 18080
+
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  datasource:
+    hikari:
+      pool-name: feed_hicariCP
+      driver-class-name: org.h2.Driver
+      jdbc-url: jdbc:h2:mem:test
+      username: sa
+      password:
+  jpa:
+    generate-ddl: true
+    show-sql: false
+    database: h2
+    open-in-view: true
+    hibernate:
+      ddl-auto: create

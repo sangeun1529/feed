@@ -1,0 +1,103 @@
+buildscript {
+    ext { //버전관리
+        springBootVersion = '2.2.5.RELEASE'
+        guavaVersion = '28.2-jre'
+        junitVersion = '4.12'
+        lombokVersion = '1.18.12'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath "io.spring.gradle:dependency-management-plugin:1.0.6.RELEASE"
+    }
+}
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'eclipse'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+    group = 'com.itsdcode.feed'
+    version = '0.1'
+    sourceCompatibility = '1.8'
+
+    repositories {
+        mavenCentral()
+    }
+
+    // 공통 의존성 정의
+    dependencies {
+        compileOnly "org.projectlombok:lombok:${lombokVersion}"
+        annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+        testCompile "junit:junit:${junitVersion}"
+        testCompile 'org.springframework.boot:spring-boot-starter-test'
+    }
+
+    // 해당 task로 서브 모듈 추가시 기초적인 디렉토리를 자동으로 생성해줍니다.
+    task initSourceFolders {
+        sourceSets*.java.srcDirs*.each {
+            if (!it.exists()) {
+                it.mkdirs()
+            }
+        }
+
+        sourceSets*.resources.srcDirs*.each {
+            if (!it.exists()) {
+                it.mkdirs()
+            }
+        }
+    }
+
+}
+
+project(':feed-common') { //util 등의 공통로직 구현
+    bootJar{
+        enabled = false
+    }
+    jar{
+        enabled = true
+    }
+    dependencies {
+        compile("com.google.guava:guava:${guavaVersion}")
+    }
+}
+
+project(':feed-core') { // domain 계층 로직 구현
+    bootJar{
+        enabled = false
+    }
+    jar{
+        enabled = true
+    }
+    dependencies {
+        compile project(':feed-common')
+        compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+        compile 'com.h2database:h2'
+    }
+}
+
+project(':feed-api') { //독립app 구현 ( feed)
+
+    bootJar{
+        enabled = true
+    }
+
+    dependencies {
+        compile project(':feed-common')
+        compile project(':feed-core')
+        compile("org.springframework.boot:spring-boot-starter-web"){
+            exclude group: "org.springframework.boot" , module: "spring-boot-starter-tomcat"
+        }
+        compile 'org.springframework.boot:spring-boot-starter-undertow'
+    }
+}
+project(':externel-api') { //외부 lib 추상화 api (어느 system 에도 사용가능한 독립 api )
+    bootJar{
+        enabled = false
+    }
+    jar{
+        enabled = true
+    }
+}

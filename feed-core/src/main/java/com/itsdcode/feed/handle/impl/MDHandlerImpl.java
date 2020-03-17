@@ -12,11 +12,12 @@ import javax.transaction.Transactional;
 
 @Component
 @Transactional
+@RequiredArgsConstructor
 public class MDHandlerImpl implements MDHandler {
 
-    @Autowired
-    private MDRepository mdRepository;
+    private final MDRepository mdRepository;
 
+    @Override
     public MDInfo getMDInfo(Long id){
         return mdRepository.findById(id).get();
     }

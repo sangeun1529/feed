@@ -2,16 +2,12 @@ package com.itsdcode.feed.app.controller;
 
 import com.itsdcode.feed.app.service.FeedService;
 import com.itsdcode.feed.domain.dto.feed.FeedDetail;
-import com.itsdcode.feed.domain.dto.md.MDInfo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.support.HttpRequestHandlerServlet;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/feed")
@@ -44,13 +40,8 @@ public class FeedController {
     }
 
     @PutMapping(value = "/{id}/shared")
-    public void putFeedShared(@PathVariable Long id ,@RequestHeader(value="userId") String authorization){
-
-    }
-
-    @GetMapping(value = "/{id}/comments")
-    public void curdFeedShared(@PathVariable Long id ,@RequestHeader(value="userId") String authorization){
-        // 댓글 CURD
+    public Map<String,String> putFeedShared(@PathVariable Long id , @RequestHeader(value="userId") Long userId){
+        return feedService.putFeedShared(id , userId);
     }
 
 }

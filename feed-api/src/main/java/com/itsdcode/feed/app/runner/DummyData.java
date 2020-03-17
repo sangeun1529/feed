@@ -37,6 +37,7 @@ public class DummyData {
                     .text("dummy data inserting...")
                     .replyCount(0)
                     .likedCount(0)
+                    .sharedCount(0)
                     .tag(new String[]{"fashion", "acc", "hip"})
                     .mdInfo(mdinfo)
                     .feedLikeList(new ArrayList<>())

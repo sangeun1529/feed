@@ -4,6 +4,7 @@ import com.itsdcode.feed.domain.dto.feed.FeedDetail;
 import com.itsdcode.feed.domain.dto.md.MDInfo;
 
 import java.util.List;
+import java.util.Map;
 
 public interface FeedService {
     public FeedDetail getFeedDetail(Long id);
@@ -14,7 +15,7 @@ public interface FeedService {
 
     public FeedDetail deleteFeedLike(Long id, Long userId);
 
-
+    public Map<String, String> putFeedShared(Long id , Long userId);
 
 
 

@@ -23,7 +23,7 @@ public class FeedLike extends AuditorHisEntity {
     @Getter
     private Long userId;
 
-    @ManyToOne(cascade = CascadeType.DETACH)
+    @ManyToOne
     @JoinColumn(name = "FeedDetail_Id")
     private FeedDetail feedDetail;
 

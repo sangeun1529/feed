@@ -3,6 +3,7 @@ package com.itsdcode.feed.domain.dto.feed;
 import com.itsdcode.feed.auditor.AuditorBaseEntity;
 import com.itsdcode.feed.domain.dto.md.MDInfo;
 import com.itsdcode.feed.domain.vo.feed.FeedLike;
+import com.itsdcode.feed.domain.vo.feed.FeedShared;
 import lombok.*;
 
 import javax.persistence.*;
@@ -31,9 +32,21 @@ public class FeedDetail extends AuditorBaseEntity {
     @Column
     private int replyCount;
 
+    @Column
+    private int sharedCount;
+
     @OneToMany(cascade = CascadeType.ALL , orphanRemoval = true ,mappedBy = "feedDetail")
     @Builder.Default
     private List<FeedLike> feedLikeList = new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL , orphanRemoval = true ,mappedBy = "feedDetail")
+    @Builder.Default
+    private List<FeedComment> feedCommentList = new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL , orphanRemoval = true ,mappedBy = "feedDetail")
+    @Builder.Default
+    private List<FeedShared> feedSharedList = new ArrayList<>();
+
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "MDInfo_Id")
@@ -46,6 +59,20 @@ public class FeedDetail extends AuditorBaseEntity {
     public void removeFeedLike(FeedLike feedLike) {
         feedLikeList.remove(feedLike);
         likedCount = feedLikeList.size();
+    }
+
+    public void addFeedComment(FeedComment feedComment ) {
+        feedCommentList.add(feedComment);
+        replyCount = feedCommentList.size();
+    }
+    public void removeFeedComment(FeedComment feedComment) {
+        feedCommentList.remove(feedComment);
+        replyCount = feedCommentList.size();
+    }
+
+    public void addFeedShared(FeedShared feedShared) {
+        feedSharedList.add(feedShared);
+        sharedCount = feedSharedList.size();
     }
 
 

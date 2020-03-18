@@ -13,7 +13,7 @@ import java.util.Map;
 
 @RestControllerAdvice
 @Slf4j
-public class FeedAdvice {
+public class FeedRestAdvice {
 
     @ExceptionHandler(PException.class)
 //    @ResponseStatus(HttpStatus.BAD_REQUEST)

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>Persistence</ID>
+  <OriginalElement>JavaeeElement:/25d90ad7/entityManagerFactory/feed.feed-core.main/jpa/JPA/PersistenceModel</OriginalElement>
+  <nodes>
+    <node x="263.0" y="150.0">MDInfo#file://C:/InteliJworkSpace/feed/feed-core/src/main/java/com/itsdcode/feed/domain/dto/md/MDInfo.java</node>
+    <node x="36.78125" y="11.5">AuditorHisEntity#file://C:/InteliJworkSpace/feed/feed-core/src/main/java/com/itsdcode/feed/auditor/AuditorHisEntity.java</node>
+    <node x="0.0" y="150.0">FeedShared#file://C:/InteliJworkSpace/feed/feed-core/src/main/java/com/itsdcode/feed/domain/vo/feed/FeedShared.java</node>
+    <node x="265.0" y="300.0">FeedDetail#file://C:/InteliJworkSpace/feed/feed-core/src/main/java/com/itsdcode/feed/domain/dto/feed/FeedDetail.java</node>
+    <node x="186.0" y="503.5">null#null</node>
+    <node x="0.0" y="491.0">AbstractPersistable#jar://C:/Users/sange/.gradle/caches/modules-2/files-2.1/org.springframework.data/spring-data-jpa/2.2.5.RELEASE/d2310c79bebfbc6d66ddeefda102b229d8ae7010/spring-data-jpa-2.2.5.RELEASE.jar!/org/springframework/data/jpa/domain/AbstractPersistable.class</node>
+    <node x="413.0" y="150.0">FeedComment#file://C:/InteliJworkSpace/feed/feed-core/src/main/java/com/itsdcode/feed/domain/dto/feed/FeedComment.java</node>
+    <node x="375.775" y="0.0">AuditorBaseEntity#file://C:/InteliJworkSpace/feed/feed-core/src/main/java/com/itsdcode/feed/auditor/AuditorBaseEntity.java</node>
+    <node x="57.0" y="595.0">AbstractAuditable#jar://C:/Users/sange/.gradle/caches/modules-2/files-2.1/org.springframework.data/spring-data-jpa/2.2.5.RELEASE/d2310c79bebfbc6d66ddeefda102b229d8ae7010/spring-data-jpa-2.2.5.RELEASE.jar!/org/springframework/data/jpa/domain/AbstractAuditable.class</node>
+    <node x="141.0" y="173.0">FeedLike#file://C:/InteliJworkSpace/feed/feed-core/src/main/java/com/itsdcode/feed/domain/vo/feed/FeedLike.java</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="AbstractAuditable#jar://C:/Users/sange/.gradle/caches/modules-2/files-2.1/org.springframework.data/spring-data-jpa/2.2.5.RELEASE/d2310c79bebfbc6d66ddeefda102b229d8ae7010/spring-data-jpa-2.2.5.RELEASE.jar!/org/springframework/data/jpa/domain/AbstractAuditable.class" target="null#null">
+      <point x="40.25" y="-38.5" />
+      <point x="177.75" y="570.0" />
+      <point x="192.0" y="570.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="FeedDetail#file://C:/InteliJworkSpace/feed/feed-core/src/main/java/com/itsdcode/feed/domain/dto/feed/FeedDetail.java" target="MDInfo#file://C:/InteliJworkSpace/feed/feed-core/src/main/java/com/itsdcode/feed/domain/dto/md/MDInfo.java">
+      <point x="0.0" y="-73.0" />
+      <point x="0.0" y="50.0" />
+    </edge>
+    <edge source="FeedShared#file://C:/InteliJworkSpace/feed/feed-core/src/main/java/com/itsdcode/feed/domain/vo/feed/FeedShared.java" target="AuditorHisEntity#file://C:/InteliJworkSpace/feed/feed-core/src/main/java/com/itsdcode/feed/auditor/AuditorHisEntity.java">
+      <point x="0.0" y="-50.0" />
+      <point x="60.5" y="125.0" />
+      <point x="80.53125" y="125.0" />
+      <point x="-43.75" y="38.5" />
+    </edge>
+    <edge source="FeedLike#file://C:/InteliJworkSpace/feed/feed-core/src/main/java/com/itsdcode/feed/domain/vo/feed/FeedLike.java" target="AuditorHisEntity#file://C:/InteliJworkSpace/feed/feed-core/src/main/java/com/itsdcode/feed/auditor/AuditorHisEntity.java">
+      <point x="0.0" y="-27.0" />
+      <point x="192.0" y="125.0" />
+      <point x="168.03125" y="125.0" />
+      <point x="43.75" y="38.5" />
+    </edge>
+    <edge source="FeedDetail#file://C:/InteliJworkSpace/feed/feed-core/src/main/java/com/itsdcode/feed/domain/dto/feed/FeedDetail.java" target="FeedShared#file://C:/InteliJworkSpace/feed/feed-core/src/main/java/com/itsdcode/feed/domain/vo/feed/FeedShared.java">
+      <point x="-50.400000000000034" y="-73.0" />
+      <point x="277.59999999999997" y="280.0" />
+      <point x="60.5" y="280.0" />
+      <point x="0.0" y="50.0" />
+    </edge>
+    <edge source="MDInfo#file://C:/InteliJworkSpace/feed/feed-core/src/main/java/com/itsdcode/feed/domain/dto/md/MDInfo.java" target="AuditorBaseEntity#file://C:/InteliJworkSpace/feed/feed-core/src/main/java/com/itsdcode/feed/auditor/AuditorBaseEntity.java">
+      <point x="0.0" y="-50.0" />
+      <point x="328.0" y="125.0" />
+      <point x="405.775" y="125.0" />
+      <point x="-60.0" y="50.0" />
+    </edge>
+    <edge source="AbstractAuditable#jar://C:/Users/sange/.gradle/caches/modules-2/files-2.1/org.springframework.data/spring-data-jpa/2.2.5.RELEASE/d2310c79bebfbc6d66ddeefda102b229d8ae7010/spring-data-jpa-2.2.5.RELEASE.jar!/org/springframework/data/jpa/domain/AbstractAuditable.class" target="AbstractPersistable#jar://C:/Users/sange/.gradle/caches/modules-2/files-2.1/org.springframework.data/spring-data-jpa/2.2.5.RELEASE/d2310c79bebfbc6d66ddeefda102b229d8ae7010/spring-data-jpa-2.2.5.RELEASE.jar!/org/springframework/data/jpa/domain/AbstractPersistable.class">
+      <point x="-40.25" y="-38.5" />
+      <point x="97.25" y="570.0" />
+      <point x="83.0" y="570.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="FeedComment#file://C:/InteliJworkSpace/feed/feed-core/src/main/java/com/itsdcode/feed/domain/dto/feed/FeedComment.java" target="AuditorBaseEntity#file://C:/InteliJworkSpace/feed/feed-core/src/main/java/com/itsdcode/feed/auditor/AuditorBaseEntity.java">
+      <point x="0.0" y="-50.0" />
+      <point x="477.5" y="125.0" />
+      <point x="465.775" y="125.0" />
+      <point x="0.0" y="50.0" />
+    </edge>
+    <edge source="FeedDetail#file://C:/InteliJworkSpace/feed/feed-core/src/main/java/com/itsdcode/feed/domain/dto/feed/FeedDetail.java" target="AuditorBaseEntity#file://C:/InteliJworkSpace/feed/feed-core/src/main/java/com/itsdcode/feed/auditor/AuditorBaseEntity.java">
+      <point x="50.39999999999998" y="-73.0" />
+      <point x="378.4" y="280.0" />
+      <point x="552.5" y="280.0" />
+      <point x="552.5" y="125.0" />
+      <point x="525.775" y="125.0" />
+      <point x="60.0" y="50.0" />
+    </edge>
+    <edge source="FeedDetail#file://C:/InteliJworkSpace/feed/feed-core/src/main/java/com/itsdcode/feed/domain/dto/feed/FeedDetail.java" target="FeedLike#file://C:/InteliJworkSpace/feed/feed-core/src/main/java/com/itsdcode/feed/domain/vo/feed/FeedLike.java">
+      <point x="-25.200000000000045" y="-73.0" />
+      <point x="302.79999999999995" y="270.0" />
+      <point x="192.0" y="270.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="FeedDetail#file://C:/InteliJworkSpace/feed/feed-core/src/main/java/com/itsdcode/feed/domain/dto/feed/FeedDetail.java" target="FeedComment#file://C:/InteliJworkSpace/feed/feed-core/src/main/java/com/itsdcode/feed/domain/dto/feed/FeedComment.java">
+      <point x="25.19999999999999" y="-73.0" />
+      <point x="353.2" y="270.0" />
+      <point x="477.5" y="270.0" />
+      <point x="0.0" y="50.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.9682080924855492" x="278.0" y="336.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Properties</Category>
+    <Category>Embeddables</Category>
+    <Category>Superclasses</Category>
+  </Categories>
+</Diagram>
+

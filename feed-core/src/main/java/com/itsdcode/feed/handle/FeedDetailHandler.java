@@ -7,9 +7,11 @@ import com.itsdcode.feed.domain.vo.feed.FeedShared;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.Optional;
+
 public interface FeedDetailHandler {
 
-    public FeedDetail getFeedDetail(Long id);
+    public Optional<FeedDetail> getFeedDetail(Long id);
 
     public Page<FeedDetail> getFeedList(Pageable pageable);
 

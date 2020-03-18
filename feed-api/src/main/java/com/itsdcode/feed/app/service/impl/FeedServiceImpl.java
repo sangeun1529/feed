@@ -1,22 +1,26 @@
 package com.itsdcode.feed.app.service.impl;
 
+import com.itsdcode.feed.app.code.ErrorCode;
 import com.itsdcode.feed.app.service.FeedService;
 import com.itsdcode.feed.domain.dto.feed.FeedDetail;
 import com.itsdcode.feed.domain.dto.md.MDInfo;
 import com.itsdcode.feed.domain.vo.feed.FeedLike;
 import com.itsdcode.feed.domain.vo.feed.FeedShared;
+import com.itsdcode.feed.exception.PException;
 import com.itsdcode.feed.format.KakaoFormat;
 import com.itsdcode.feed.handle.FeedDetailHandler;
 import com.itsdcode.feed.handle.MDHandler;
 import com.itsdcode.feed.util.LongUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import net.bytebuddy.implementation.bytecode.Throw;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import static org.springframework.data.domain.Sort.by;
@@ -30,7 +34,7 @@ public class FeedServiceImpl implements FeedService {
 
     @Override
     public FeedDetail getFeedDetail(Long id) {
-        return feedDetailHandler.getFeedDetail(id);
+        return getFeedDetailById(id);
     }
 
     @Override
@@ -46,9 +50,8 @@ public class FeedServiceImpl implements FeedService {
 
     @Override
     public FeedDetail putFeedLike(Long id, Long userId) {
-        FeedDetail fd = feedDetailHandler.getFeedDetail(id);
-        if (fd.getFeedLikeList().isEmpty() ||
-                !fd.getFeedLikeList().stream()
+        FeedDetail fd = getFeedDetailById(id);
+        if (!fd.getFeedLikeList().stream()
                         .anyMatch(x -> LongUtils.contains(x.getUserId(), userId))) {
             feedDetailHandler.putFeedLiked(fd, FeedLike.builder()
                     .userId(userId)
@@ -60,8 +63,8 @@ public class FeedServiceImpl implements FeedService {
 
     @Override
     public FeedDetail deleteFeedLike(Long id, Long userId) {
-        FeedDetail fd = feedDetailHandler.getFeedDetail(id);
-        if (!fd.getFeedLikeList().isEmpty() && fd.getLikedCount() > 0) {
+        FeedDetail fd = getFeedDetailById(id);
+        if (fd.getLikedCount() > 0) {
             Optional<FeedLike> fl = fd.getFeedLikeList().stream().filter(x -> LongUtils.contains(x.getUserId(), userId)).findFirst();
             if (fl.isPresent())
                 feedDetailHandler.deleteFeedLiked(fd, fl.get());
@@ -72,7 +75,7 @@ public class FeedServiceImpl implements FeedService {
 
     @Override
     public Map<String, String> putFeedShared(Long id, Long userId) {
-        FeedDetail fd = feedDetailHandler.getFeedDetail(id);
+        FeedDetail fd = getFeedDetailById(id);
         String webUrl = "http://localhost:18080/feed/" + id;
 
         feedDetailHandler.putFeedShared(fd, FeedShared.builder()
@@ -116,5 +119,9 @@ public class FeedServiceImpl implements FeedService {
     @Override
     public MDInfo dummyMDInfo(MDInfo mdInfo) {
         return mdHandler.postMDInfo(mdInfo);
+    }
+
+    private FeedDetail getFeedDetailById(Long Id){
+        return feedDetailHandler.getFeedDetail(Id).orElseThrow(() -> new PException(ErrorCode.FEED_BY_ID_NULL));
     }
 }

@@ -26,14 +26,17 @@ public class FeedDetail extends AuditorBaseEntity {
     @Column(length = 200)
     private String[] tag; //binary
 
-    @Column
-    private int likedCount;
+    @Column(nullable = false)
+    @Builder.Default
+    private int likedCount=0;
 
-    @Column
-    private int replyCount;
+    @Column(nullable = false)
+    @Builder.Default
+    private int replyCount=0;
 
-    @Column
-    private int sharedCount;
+    @Column(nullable = false)
+    @Builder.Default
+    private int sharedCount=0;
 
     @OneToMany(cascade = CascadeType.ALL , orphanRemoval = true ,mappedBy = "feedDetail")
     @Builder.Default
